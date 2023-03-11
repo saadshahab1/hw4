@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       # if user's password matches submitted password
         if BCrypt::Password.new(@user["password"]) == params["password"]
           session["user_id"] = @user["id"] 
+          
           # send them to places
           flash["notice"] = "You logged in!"
           redirect_to "/places"

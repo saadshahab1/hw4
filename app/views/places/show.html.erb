@@ -2,6 +2,7 @@
 
 <h2>My Posts</h2>
 <% for post in @posts %>
+  <!-- if post's user_id is current user's id -->
   <h3><%= post["title"] %></h3>
   <h4><%= post["posted_on"] %></h4>
   <p><%= post["description"] %></p>

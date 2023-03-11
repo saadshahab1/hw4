@@ -5,8 +5,12 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = Place.find_by({ "id" => params["id"] })
-    @posts = Post.where({ "place_id" => @place["id"], "user_id" => @current_user["id"] })
+    if @current_user
+      @place = Place.find_by({ "id" => params["id"] })
+      @posts = Post.where({ "place_id" => @place["id"], "user_id" => @current_user["id"] }) #added the second part
+    else
+      redirect_to "/sessions/new"
+    end
   end
 
   def new
