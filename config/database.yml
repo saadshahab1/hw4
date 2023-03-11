@@ -23,3 +23,10 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+
+  production:
+  <<: *default
+  adapter: postgresql
+  database: my_app_production
+  username: saad-app
+  password: <%= ENV["SAAD-APP_DATABASE_PASSWORD"] %>
