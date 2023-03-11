@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
         end
     else 
       # otherwise, back to login
-      flas["notice"] = "Email and password mismatch"
+      flash["notice"] = "Email and password mismatch"
       redirect_to "/sessions/new"
     end
   end
