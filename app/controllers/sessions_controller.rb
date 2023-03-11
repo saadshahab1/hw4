@@ -11,15 +11,16 @@ class SessionsController < ApplicationController
           session["user_id"] = @user["id"] 
           
           # send them to places
-          flash["notice"] = "You logged in!"
+          flash["notice"] = "Welcome to your page!"
           redirect_to "/places"
         else
           # otherwise, back to login
-          flash["notice"] = "Nope!"
+          flash["notice"] = "Incorrect password. Please try again."
           redirect_to "/sessions/new"
         end
     else 
       # otherwise, back to login
+      flas["notice"] = "Email and password mismatch"
       redirect_to "/sessions/new"
     end
   end

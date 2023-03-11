@@ -1,20 +1,38 @@
-<h1>New Post</h1>
 
-<%= form_with :model => @post do |form| %>
-  <%= form.hidden_field "place_id" %>
-  <p>
-    <%= form.label "title" %>
-    <%= form.text_field "title" %>
-  </p>
-  <p>
-    <%= form.label "description" %>
-    <%= form.text_field "description" %>
-  </p>
-  <p>
-    <%= form.label "posted_on" %>
-    <%= form.date_field "posted_on" %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+
+<% if @current_user%>
+
+  <h1>New Post</h1>
+
+  <%= form_with :model => @post do |form| %>
+    <%= form.hidden_field "place_id" %>
+    <p>
+      <%= form.label "title" %>
+      <%= form.text_field "title" %>
+    </p>
+    <p>
+      <%= form.label "description" %>
+      <%= form.text_field "description" %>
+    </p>
+    <p>
+      <%= form.label "posted_on" %>
+      <%= form.date_field "posted_on" %>
+    </p>
+    
+    <div class="mb-3">
+    <%= form.label "uploaded_image", :class => "form-label" %>
+    <%= form.file_field "uploaded_image", :class => "form-control" %>
+    </div>
+   
+    <p>
+      <%= form.submit "Create Post", :class => "btn btn-primary" %>
+    </p>
+    <p>
+      <button type="button" class="btn btn-light"><a href="/places">Back to All Places</a></button>
+    </p>
+
+  <% end %>
+
+<% else %>
+  You must <a href="/login">login</a> first to post.
 <% end %>

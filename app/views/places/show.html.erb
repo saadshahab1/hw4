@@ -1,17 +1,37 @@
 <h1><%= @place["name"] %></h1>
 
-<h2>My Posts</h2>
-<% for post in @posts %>
-  <!-- if post's user_id is current user's id -->
-  <h3><%= post["title"] %></h3>
-  <h4><%= post["posted_on"] %></h4>
-  <p><%= post["description"] %></p>
+<div class="container">
+  <div class="row">
+  <% if @current_user%>
+  <!-- <h2>My Posts</h2> -->
+  <% for post in @posts %>
+    <div class="col-md-6 col-lg-3">
+    <!-- if post's user_id is current user's id -->
+    <h3><%= post["title"] %></h3>
+    <h4><%= post["posted_on"] %></h4>
+    <p><%= post["description"] %></p>
+    <% if post.uploaded_image.attached? %>
+            <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid" >
+          <% else %>
+            <img src = "<%=post["image"] %>" class="img-fluid">
+          <% end %>
+
+    <img src="<%=post["image"] %>" class="img-fluid">
+  </div>
 <% end %>
+</div>
 
-<p>
-  <a href="/posts/new?place_id=<%= @place["id"] %>">New Post</a>
-</p>
 
-<p>
-  <a href="/places">Back to All Places</a>
-</p>
+<div class="row">
+      <div class="col-sm-20 text-end">
+        <a href="/posts/new?place_id=<%= @place["id"] %>" class="btn btn-success">New Post</a>
+        <p>
+
+      <button type="button" class="btn btn-light"><a href="/places">Back to All Places</a></button>
+      </p>
+      </div>
+      
+</div>
+
+<% end %>
+</div>
