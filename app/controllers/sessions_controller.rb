@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
           session["user_id"] = @user["id"] 
           
           # send them to places
-          flash["notice"] = "Welcome to your page!"
+          flash["notice"] = "Welcome to your places!"
           redirect_to "/places"
         else
           # otherwise, back to login
