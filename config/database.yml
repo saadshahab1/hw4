@@ -27,6 +27,6 @@ production:
   production:
   <<: *default
   adapter: postgresql
-  database: my_app_production
+  database: saad-app_production
   username: saad-app
   password: <%= ENV["SAAD-APP_DATABASE_PASSWORD"] %>
